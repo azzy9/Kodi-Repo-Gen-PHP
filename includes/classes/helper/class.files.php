@@ -18,6 +18,7 @@ class files {
 		'list_dir'		=> false,
 		'list_files'	=> true,
 		'exclude'			=> '',
+		'file_types'	=> array(),
 	);
 
 	//any errors caught
@@ -84,7 +85,7 @@ class files {
 
 	private function _directory_to_array($directory = null) {
 
-		if($directory === null){$directory = $this->options['scan_dir'];}
+		if($directory === null){ $directory = $this->options['scan_dir']; }
 
 		$arrayItems = array();
 		$skipByExclude = false;
@@ -109,8 +110,10 @@ class files {
 
 					} else {
 						if($this->options['list_files']){
-							$file = $directory . DIRECTORY_SEPARATOR . $file;
-							$arrayItems[] = $file;
+							if( empty( $this->options['file_types'] ) || in_array( substr( strrchr($file, '.'), 1 ), $this->options['file_types'] ) ) {
+								$file = $directory . DIRECTORY_SEPARATOR . $file;
+								$arrayItems[] = $file;
+							}
 						}
 					}
 				}
