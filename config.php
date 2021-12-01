@@ -1,16 +1,19 @@
 <?php
 
 #if to output information
-$show_info		= true;
+$show_info			= true;
 
 #the dir to search for plugins
-$plugin_dir		= 'plugins';
+$plugin_dir			= 'plugins';
 
 #the output file, can also be a directory
-$output_file	= 'addons.xml';
+$output_file		= 'addons.xml';
+
+#if to extract the addon.xml files
+$extract_files	= true;
 
 #if to generate a hash file
-$hash_file		= true;
+$hash_file			= true;
 
 #the password to run the file
-$password			= 'qwerty';
+$password				= 'qwerty';
