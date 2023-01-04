@@ -82,6 +82,7 @@ function ouput_generate( $output_file, $plugin_dir, $show_info ) {
 	fclose( $fh );
 
 	if( $show_info ) {
+		echo '<br />';
 		echo 'Generated: ', $output_file, '<br />';
 		echo 'Folders Detected: ', $plugins_stats[ 'plugins' ], '<br />';
 		echo 'Plugins Included: ', $plugins_stats[ 'included' ], '<br />';
@@ -141,7 +142,7 @@ function xml_extract( $plugin_dir, $show_info ) {
 				if($addonxml = $zip->getFromName( str_replace( $plugin_dir . '/', '', $plugin ) . '/addon.xml')) {
 					file_put_contents( $plugin . '/addon.xml' , $addonxml);
 					if( $show_info ) {
-						echo 'Updating: ', $plugin, '/addon.xml<br />';
+						echo 'Updating: ', $plugin, '/addon.xml -> ' . $latest_version . '<br />';
 					}
 				} else {
 					if( $show_info ) {
